@@ -1,0 +1,60 @@
+.password-generate{
+  text-align: center;
+}
+
+.password-generate p{
+  text-align: center;
+}
+.password-generate button{
+  text-align: center;
+  display:grid;
+  margin-left: 600px;
+}
+
+.password-generate label,
+.password-generate input{
+  margin-top: 23px;
+}
+
+.list{
+  width: 30%;
+}
+
+.listGroup{
+  margin: 4px;
+}
+
+.buttons{
+  margin-left: 220px;
+  margin-top: -26px;
+}
+
+.listGroup button{
+  margin-left: 10px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8); /* Black background with transparency */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it stays on top */
+}
+
+
+.form-modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px; /* You can adjust this as needed */
+}
+
+.searchList{
+  margin-left: 50%;
+  width: 50%;
+}
