@@ -1,10 +1,10 @@
 import { useContext, useRef } from "react";
 import { PostList } from "../store/post-list-store";
+import ReactDOM from "react-dom";
 
 const FormModal=({setSelected})=>{
 
   const {addPassword}=useContext(PostList)
-
 
   const TitleElement=useRef()
   const PasswordElement=useRef()
@@ -19,7 +19,7 @@ const FormModal=({setSelected})=>{
     setSelected(false)
   }
 
-  return(
+  return ReactDOM.createPortal(
     <div className="modal-overlay">
       <form className="form-modal" onSubmit={formSubmitHandlet}>
 
@@ -40,7 +40,8 @@ const FormModal=({setSelected})=>{
         <button type="button" class="btn btn-dark" onClick={()=>{setSelected(false)}}>x</button>
 
       </form>
-    </div>
+    </div>,
+    document.getElementById("modal-root")
   )
 }
 

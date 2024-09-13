@@ -1,8 +1,24 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { PostList } from "../store/post-list-store";
+import EditModal from "./EditModal";
 
-const PasswordList=({setSelected})=>{
-  const {postList,deletePassword,editPassword}=useContext(PostList)
+const PasswordList=()=>{
+
+  const {postList,deletePassword}=useContext(PostList)
+  const [editForm,setEditForm]=useState(false)
+  const [selectedPost ,setselectedPost]=useState(null)
+  const [selectedId,setSelectedId]=useState(null)
+
+
+  const editButtonHandler=(post,id)=>{ 
+    console.log(post,id)
+    setSelectedId(id);
+    setselectedPost(post);
+    setEditForm(true);
+    
+  }
+
+ 
 
   return(
     <div>
@@ -10,15 +26,23 @@ const PasswordList=({setSelected})=>{
 
       <ul class="list-group list">
         {postList.map((post,id)=>
-        <li class="list-group-item listGroup">
+        post &&(<li key={post.id} class="list-group-item listGroup">
           {post.username}{post.password}
           <div className="buttons">
             <button type="button" class="btn btn-danger" onClick={()=>{deletePassword(id)}}>Delete</button>
-            <button type="button" class="btn btn-primary"onClick={()=>{setSelected(true)&& editPassword(id)}}>Edit</button>
+            <button type="button" class="btn btn-primary"onClick={()=>editButtonHandler(post,id)} >Edit</button>
           </div>  
-        </li>)}
+        </li>)
+        )}
       </ul>
-
+      {editForm &&( 
+        <EditModal 
+          setEditForm={setEditForm} 
+          post={selectedPost} 
+          id={selectedId}
+          />
+          
+        )}
     </div>
   )
 }
